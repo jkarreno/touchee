@@ -1,0 +1,8 @@
+[13-Apr-2021 19:00:27 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to undefined function msqyli_fetch_array() in /home/kraps/public_html/_touchee/estadisticos/estadisticos.php:26
+Stack trace:
+#0 {main}
+  thrown in /home/kraps/public_html/_touchee/estadisticos/estadisticos.php on line 26
+[13-Apr-2021 19:00:28 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to undefined function msqyli_fetch_array() in /home/kraps/public_html/_touchee/estadisticos/estadisticos.php:26
+Stack trace:
+#0 {main}
+  thrown in /home/kraps/public_html/_touchee/estadisticos/estadisticos.php on line 26
