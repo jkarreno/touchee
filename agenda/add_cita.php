@@ -54,11 +54,11 @@ if($_SESSION["perfil"]=='admin')
 }
 elseif($_SESSION["perfil"]=='usuar')
 {
-    $ResServ=mysqli_query($conn, "SELECT Id, Nombre FROM servicios WHERE IdUsuario='".$_SESSION["Id"]."' ORDER BY Nombre ASC");
+    $ResServ=mysqli_query($conn, "SELECT Id, Nombre FROM servicios WHERE IdUsuario LIKE '%|".$_SESSION["Id"]."|%' ORDER BY Nombre ASC");
 }
 elseif($_SESSION["perfil"]=='asist')    
 {
-    $ResServ=mysqli_query($conn, "SELECT Id, Nombre FROM servicios WHERE IdUsuario='".$_SESSION["IdUsuario"]."' ORDER BY Nombre ASC");
+    $ResServ=mysqli_query($conn, "SELECT Id, Nombre FROM servicios WHERE IdUsuario LIKE '%|".$_SESSION["IdUsuario"]."|%' ORDER BY Nombre ASC");
 }
 
 $ResServ=mysqli_query($conn, "SELECT Id, Nombre FROM servicios ORDER BY Nombre ASC");
