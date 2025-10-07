@@ -12,7 +12,7 @@ $cadena='<div class="c100 card">
                 <label class="l_form">Duración:</label>
                 <input type="text" name="duracion" id="duracion" placeholder="HH:MM" pattern="[0-9]{2}:[0-9]{2}" maxlength="5">
 				<label class="l_form">Responsable:</label>
-				<select name="usuario" id="usuario">
+				<select name="usuario[]" id="usuario" multiple style="height: 200px;">
 					<option value="">Selecciona</option>';
 if($_SESSION["perfil"]=='admin')
 {

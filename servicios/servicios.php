@@ -12,8 +12,14 @@ if(isset($_POST["hacer"]))
     //agregar servicio
 	if($_POST["hacer"]=='addservicio')
 	{
+		$usuarios = '|';
+
+		foreach($_POST["usuario"] as $usuario) {
+			$usuarios .= $usuario.'|';
+		}
+
 		mysqli_query($conn, "INSERT INTO servicios (Nombre, Duracion, IdUsuario)
-											VALUES ('".$_POST["nombre"]."', '".$_POST["duracion"]."', '".$_POST["usuario"]."')");
+											VALUES ('".$_POST["nombre"]."', '".$_POST["duracion"]."', '".$usuarios."')");
 
 		$mensaje='<div class="mesaje" id="mesaje"><i class="fas fa-thumbs-up"></i> Se agrego el servicio '.$_POST["nombre"].'</div>';
 	}
@@ -21,9 +27,15 @@ if(isset($_POST["hacer"]))
 	//editar servicio
 	if($_POST["hacer"]=='editservicio')
 	{
+		$usuarios = '|';
+
+		foreach($_POST["usuario"] as $usuario) {
+			$usuarios .= $usuario.'|';
+		}
+
 		mysqli_query($conn, "UPDATE servicios SET Nombre='".$_POST["nombre"]."',
 													Duracion='".$_POST["duracion"]."',
-													IdUsuario='".$_POST["usuario"]."'
+													IdUsuario='".$usuarios."'
 											WHERE Id='".$_POST["idservicio"]."'");
 
 		$mensaje='<div class="mesaje" id="mesaje"><i class="fas fa-thumbs-up"></i> Se actualizo el servicio '.$_POST["nombre"].'</div>';									
@@ -60,12 +72,23 @@ $bgcolor="#ffffff"; $J=1;
 $ResServicios=mysqli_query($conn, "SELECT * FROM servicios ORDER BY Nombre ASC");
 while($RResServ=mysqli_fetch_array($ResServicios))
 {
+	$arreglo = array_filter(explode("|", $RResServ["IdUsuario"]));
+
+	foreach($arreglo as $index => $key) {
+		$ResUsuario = mysqli_fetch_array(mysqli_query($conn, "SELECT Nombre FROM usuarios WHERE Id='".$key."'"));
+    $usuarios .= $ResUsuario["Nombre"];
+	
+    if($index < count($arreglo)) {
+        $usuarios .= ', ';
+    }
+}
+	//obtengo el nombre del usuario
 	$ResUsuario = mysqli_fetch_array(mysqli_query($conn, "SELECT Nombre FROM usuarios WHERE Id='".$RResServ["IdUsuario"]."'"));
     $cadena.='	<tr style="background: '.$bgcolor.'" id="row_'.$J.'">
 					<td onmouseover="row_'.$J.'.style.background=\'#badad8\'" onmouseout="row_'.$J.'.style.background=\''.$bgcolor.'\'" align="center" class="texto" valign="middle">'.$J.'</td>
 					<td onmouseover="row_'.$J.'.style.background=\'#badad8\'" onmouseout="row_'.$J.'.style.background=\''.$bgcolor.'\'" align="left" class="texto" valign="middle">'.$RResServ["Nombre"].'</td>
 					<td onmouseover="row_'.$J.'.style.background=\'#badad8\'" onmouseout="row_'.$J.'.style.background=\''.$bgcolor.'\'" align="left" class="texto" valign="middle">'.$RResServ["Duracion"].'</td>
-					<td onmouseover="row_'.$J.'.style.background=\'#badad8\'" onmouseout="row_'.$J.'.style.background=\''.$bgcolor.'\'" align="left" class="texto" valign="middle">'.$ResUsuario["Nombre"].'</td>
+					<td onmouseover="row_'.$J.'.style.background=\'#badad8\'" onmouseout="row_'.$J.'.style.background=\''.$bgcolor.'\'" align="left" class="texto" valign="middle">'.$usuarios.'</td>
 					<td onmouseover="row_'.$J.'.style.background=\'#badad8\'" onmouseout="row_'.$J.'.style.background=\''.$bgcolor.'\'" align="center" class="texto" valign="middle">
 						<a href="#" onclick="edit_servicio(\''.$RResServ["Id"].'\')"><i class="fa fa-pencil-square" aria-hidden="true"></i></a> 
 					</td>
@@ -73,7 +96,7 @@ while($RResServ=mysqli_fetch_array($ResServicios))
 						<a href="#" onclick="del_servicio(\''.$RResServ["Id"].'\')"><i class="fa fa-trash" aria-hidden="true"></i></a>
 					</td>
 				</tr>';
-		$J++;
+		$J++; $usuarios = '';
 		if($bgcolor=="#ffffff"){$bgcolor='#cccccc';}
 		else if($bgcolor=="#cccccc"){$bgcolor="#ffffff";}
 }
