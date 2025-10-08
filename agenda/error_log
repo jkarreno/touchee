@@ -1,2 +1,24 @@
-[04-Oct-2025 14:02:54 America/Mexico_City] PHP Warning:  Undefined array key "IdUsuario" in /home/kraps/public_html/_touchee/agenda/agenda.php on line 65
-[04-Oct-2025 14:02:54 America/Mexico_City] PHP Warning:  Undefined array key "IdUsuario" in /home/kraps/public_html/_touchee/agenda/agenda.php on line 94
+[07-Oct-2025 13:18:17 America/Mexico_City] PHP Warning:  Undefined array key "va1" in /home/kraps/public_html/_studiokarli/agenda/agenda.php on line 40
+[07-Oct-2025 13:18:17 America/Mexico_City] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `kraps_touchee`.`citas`.`VistaAsistente` at row 1 in /home/kraps/public_html/_studiokarli/agenda/agenda.php:40
+Stack trace:
+#0 /home/kraps/public_html/_studiokarli/agenda/agenda.php(40): mysqli_query(Object(mysqli), 'INSERT INTO cit...')
+#1 {main}
+  thrown in /home/kraps/public_html/_studiokarli/agenda/agenda.php on line 40
+[07-Oct-2025 13:18:23 America/Mexico_City] PHP Warning:  Undefined array key "va1" in /home/kraps/public_html/_studiokarli/agenda/agenda.php on line 40
+[07-Oct-2025 13:18:23 America/Mexico_City] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `kraps_touchee`.`citas`.`VistaAsistente` at row 1 in /home/kraps/public_html/_studiokarli/agenda/agenda.php:40
+Stack trace:
+#0 /home/kraps/public_html/_studiokarli/agenda/agenda.php(40): mysqli_query(Object(mysqli), 'INSERT INTO cit...')
+#1 {main}
+  thrown in /home/kraps/public_html/_studiokarli/agenda/agenda.php on line 40
+[07-Oct-2025 13:18:29 America/Mexico_City] PHP Warning:  Undefined array key "va1" in /home/kraps/public_html/_studiokarli/agenda/agenda.php on line 40
+[07-Oct-2025 13:18:29 America/Mexico_City] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `kraps_touchee`.`citas`.`VistaAsistente` at row 1 in /home/kraps/public_html/_studiokarli/agenda/agenda.php:40
+Stack trace:
+#0 /home/kraps/public_html/_studiokarli/agenda/agenda.php(40): mysqli_query(Object(mysqli), 'INSERT INTO cit...')
+#1 {main}
+  thrown in /home/kraps/public_html/_studiokarli/agenda/agenda.php on line 40
+[07-Oct-2025 13:18:35 America/Mexico_City] PHP Warning:  Undefined array key "va1" in /home/kraps/public_html/_studiokarli/agenda/agenda.php on line 40
+[07-Oct-2025 13:18:35 America/Mexico_City] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `kraps_touchee`.`citas`.`VistaAsistente` at row 1 in /home/kraps/public_html/_studiokarli/agenda/agenda.php:40
+Stack trace:
+#0 /home/kraps/public_html/_studiokarli/agenda/agenda.php(40): mysqli_query(Object(mysqli), 'INSERT INTO cit...')
+#1 {main}
+  thrown in /home/kraps/public_html/_studiokarli/agenda/agenda.php on line 40
