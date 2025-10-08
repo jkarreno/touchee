@@ -116,6 +116,6 @@ input[type="password"]{
 		background: rgba(238,235,235,0.7);
 	}
 	
-@media screen and (max-width: 400px){
+@media screen and (max-width: 500px){
 	.centrado_index{width: 80%; height: 80%;}
 }

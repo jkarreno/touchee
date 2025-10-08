@@ -36,8 +36,8 @@ if(isset($_POST["hacer"]))
             $IdCliente=$ResCliente["Id"];
         }
 
-        mysqli_query($conn, "INSERT INTO citas (Cliente, Usuario, Servicio, Fecha, Hora, Activa, VistaAsistente)
-                                        VALUES ('".$IdCliente."', '".$_POST["usuario"]."', '".$_POST["servicio"]."', '".$_POST["fechacita"]."', '".$_POST["hora"]."', '1', '".$_POST["va1"]."')");
+        mysqli_query($conn, "INSERT INTO citas (Cliente, Usuario, Servicio, Fecha, Hora, Activa".(isset($_POST["va1"]) ? ", VistaAsistente" : '').")
+                                        VALUES ('".$IdCliente."', '".$_POST["usuario"]."', '".$_POST["servicio"]."', '".$_POST["fechacita"]."', '".$_POST["hora"]."', '1'".(isset($_POST["va1"]) ? ", '".$_POST["va1"]."'" : "").")");
 
         $mensaje='<div class="mesaje" id="mesaje"><i class="fas fa-thumbs-up"></i> Se agrego la cita</div>';
 
@@ -103,7 +103,7 @@ elseif($_SESSION["perfil"]=='asist')
 
 while($RResUsu=mysqli_fetch_array($ResUsuarios))
 {
-    $cadena.='<div class="horarios_agenda" style="width: '.(90/$NumResUsuarios).'%">
+    $cadena.='<div class="horarios_agenda">
                 <div style="background: '.$RResUsu["Color"].'">'.$RResUsu["Nombre"].'</div>
                 <div class="hora_agenda" ';if($_SESSION["perfil"]=='admin' OR $_SESSION["Id"]==$RResUsu["Id"]){$cadena.='onclick="add_cita(\''.$fechahoy.'\', \'07:00\', \''.$RResUsu["Id"].'\')"';}$cadena.='></div>
                 <div class="hora_agenda" ';if($_SESSION["perfil"]=='admin' OR $_SESSION["Id"]==$RResUsu["Id"]){$cadena.='onclick="add_cita(\''.$fechahoy.'\', \'08:00\', \''.$RResUsu["Id"].'\')"';}$cadena.='></div>
