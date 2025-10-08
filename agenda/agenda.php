@@ -68,7 +68,7 @@ if(isset($_POST["hacer"]))
     }
 }
 
-$cadena=$mensaje.'<div class="c100" style="text-align: right; padding: 10px;">| <input type="date" name="fechacita" id="fechacita" value="'.$fechahoy.'" style="width:130px" onchange="agenda(this.value)"> | <a href="#" onclick="add_cita(';if($_SESSION["perfil"]!='admin'){$cadena.='\''.$fechahoy.'\', \'1.0\', \''.$_SESSION["Id"].'\'';}$cadena.=')">Nueva Cita</a> |</div>
+$cadena=$mensaje.'<div class="c100" style="text-align: right; padding: 10px;">| <a href="#" onclick="vista_mensual(\''.date("m").'\', \''.date("Y").'\')">Vista mensual</a> | <input type="date" name="fechacita" id="fechacita" value="'.$fechahoy.'" style="width:130px" onchange="agenda(this.value)"> | <a href="#" onclick="add_cita(';if($_SESSION["perfil"]!='admin'){$cadena.='\''.$fechahoy.'\', \'1.0\', \''.$_SESSION["Id"].'\'';}$cadena.=')">Nueva Cita</a> |</div>
         <div class="agenda">
             <div class="horarios_agenda">
                 <div><span>Horario</span></div>
@@ -215,7 +215,15 @@ function delete_cita(cita){
 		$('#contenido').html(info);
 	});
 }
-
+function vista_mensual(mes, anno){
+    $.ajax({
+				type: 'POST',
+				url : 'agenda/agenda_mensual.php',
+                data: 'mes=' + mes +'&anno=' + anno 
+	}).done (function ( info ){
+		$('#contenido').html(info);
+	});
+}
 //mostrar mensaje despues de los cambios
 setTimeout(function() { 
     $('#mesaje').fadeOut('fast'); 
