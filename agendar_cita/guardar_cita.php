@@ -11,10 +11,10 @@ $hora = $data['Hora'] ?? '';
 
 try {
     $stmt = $pdo->prepare("
-        INSERT INTO citas (Cliente, Servicio, Fecha, Hora) 
-        VALUES (?, ?, ?, ?)
+        INSERT INTO citas (Cliente, Usuario, Servicio, Fecha, Hora) 
+        VALUES (?, ?, ?, ?, ?)
     ");
-    $stmt->execute([$cliente, $servicio, $fecha, $hora]);
+    $stmt->execute([$cliente, '8', $servicio, $fecha, $hora]);
     
     echo json_encode([
         'success' => true,
