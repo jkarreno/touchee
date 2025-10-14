@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 require_once 'config.php';
 
 try {
-    $stmt = $pdo->query("SELECT * FROM servicios ORDER BY Nombre");
+    $stmt = $pdo->query("SELECT * FROM servicios WHERE Tipo = '1' ORDER BY Nombre");
     $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     echo json_encode([

@@ -84,6 +84,8 @@ $cadena=$mensaje.'<div class="c100" style="text-align: right; padding: 10px;">| 
                 <div><span>16:00 a 17:00</span></div>
                 <div><span>17:00 a 18:00</span></div>
                 <div><span>18:00 a 19:00</span></div>
+                <div><span>19:00 a 20:00</span></div>
+                <div><span>20:00 a 21:00</span></div>
             </div>';
 if($_SESSION["perfil"]=='admin')
 {
@@ -116,7 +118,9 @@ while($RResUsu=mysqli_fetch_array($ResUsuarios))
                 <div class="hora_agenda" ';if($_SESSION["perfil"]=='admin' OR $_SESSION["Id"]==$RResUsu["Id"]){$cadena.='onclick="add_cita(\''.$fechahoy.'\', \'15:00\', \''.$RResUsu["Id"].'\')"';}$cadena.='></div>
                 <div class="hora_agenda" ';if($_SESSION["perfil"]=='admin' OR $_SESSION["Id"]==$RResUsu["Id"]){$cadena.='onclick="add_cita(\''.$fechahoy.'\', \'16:00\', \''.$RResUsu["Id"].'\')"';}$cadena.='></div>
                 <div class="hora_agenda" ';if($_SESSION["perfil"]=='admin' OR $_SESSION["Id"]==$RResUsu["Id"]){$cadena.='onclick="add_cita(\''.$fechahoy.'\', \'17:00\', \''.$RResUsu["Id"].'\')"';}$cadena.='></div>
-                <div class="hora_agenda" ';if($_SESSION["perfil"]=='admin' OR $_SESSION["Id"]==$RResUsu["Id"]){$cadena.='onclick="add_cita(\''.$fechahoy.'\', \'18:00\', \''.$RResUsu["Id"].'\')"';}$cadena.='></div>';
+                <div class="hora_agenda" ';if($_SESSION["perfil"]=='admin' OR $_SESSION["Id"]==$RResUsu["Id"]){$cadena.='onclick="add_cita(\''.$fechahoy.'\', \'18:00\', \''.$RResUsu["Id"].'\')"';}$cadena.='></div>
+                <div class="hora_agenda" ';if($_SESSION["perfil"]=='admin' OR $_SESSION["Id"]==$RResUsu["Id"]){$cadena.='onclick="add_cita(\''.$fechahoy.'\', \'19:00\', \''.$RResUsu["Id"].'\')"';}$cadena.='></div>
+                <div class="hora_agenda" ';if($_SESSION["perfil"]=='admin' OR $_SESSION["Id"]==$RResUsu["Id"]){$cadena.='onclick="add_cita(\''.$fechahoy.'\', \'20:00\', \''.$RResUsu["Id"].'\')"';}$cadena.='></div>';
     if($_SESSION["perfil"]=='admin')
     {
         $ResCitas=mysqli_query($conn, "SELECT * FROM citas WHERE usuario='".$RResUsu["Id"]."' AND Fecha='".$fechahoy."' AND Activa='1' ORDER BY Hora ASC");
@@ -166,6 +170,9 @@ while($RResUsu=mysqli_fetch_array($ResUsuarios))
             case '17:30': $hora='11.5'; break;   //9.5
             case '18:00': $hora='12.0'; break;  //10.0
             case '18:30': $hora='12.5'; break;  //10.5
+            case '19:00': $hora='13.0'; break;  //10.5
+            case '19:30': $hora='13.5'; break;  //10.5
+            case '20:00': $hora='14.0'; break;  //10.5
         }
 
 
